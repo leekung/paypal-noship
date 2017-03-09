@@ -1,0 +1,26 @@
+{
+    "name": "isamare/paypal_noship",
+    "type": "magento-module",
+    "description": "Do not send shipping address for Paypal payment",
+    "homepage": "https://github.com/leekung/paypal-noship",
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    },
+    "authors": [
+        {
+            "name": "isamare"
+        }
+    ],
+    "extra": {
+        "map": [
+            [
+                "app/etc/modules/IsAmAre_PaypalNoShip.xml",
+                "app/etc/modules/IsAmAre_PaypalNoShip.xml"
+            ],
+            [
+                "app/code/local/IsAmAre/PaypalNoShip",
+                "app/code/local/IsAmAre/PaypalNoShip"
+            ]
+        ]
+    }
+}
