@@ -1,6 +1,18 @@
 <?php
 class IsAmAre_PaypalNoShip_Model_Paypal_Api_Nvp extends Mage_Paypal_Model_Api_Nvp
 {
+
+    protected function _construct() {
+        parent::_construct();
+
+        /// Magento 1.9+ has added the DoExpressCheckoutPayment method to the required response params array.
+        /// This array is checked prior to any error checking, therefore an error condition will trigger an
+        /// early exit (even if the error is recoverable).  So we'll remove the 'AMT' field from the required
+        /// params array.
+        if (version_compare(Mage::getVersion(), '1.9', '>=')) {
+            $this->_requiredResponseParams[static::DO_EXPRESS_CHECKOUT_PAYMENT] = array('ACK', 'CORRELATIONID');
+        }
+    }
     /**
      * Do the API call
      * add NOSHIPPING=1
